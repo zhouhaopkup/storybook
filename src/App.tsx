@@ -9,8 +9,9 @@ function App() {
       <Menu
         defaultIndex={0}
         onSelect={(index) => {
-          alert(index);
+          console.log(index);
         }}
+        // mode={"vertical"}
       >
         <MenuItem index={0}>cool link1</MenuItem>
         <MenuItem index={1} disabled>
@@ -18,7 +19,7 @@ function App() {
         </MenuItem>
         <MenuItem index={2}>cool link3</MenuItem>
       </Menu>
-      <Button className="custom">Hello</Button>
+      {/* <Button className="custom">Hello</Button>
       <Button autoFocus>Auto Focus</Button>
       <Button disabled>Disabled</Button>
       <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
@@ -36,7 +37,7 @@ function App() {
       </Button>
       <Button disabled btnType={ButtonType.Link} href="http://www.baidu.com">
         Link Disabled
-      </Button>
+      </Button> */}
     </>
   );
 }
