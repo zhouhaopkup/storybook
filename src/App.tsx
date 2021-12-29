@@ -1,12 +1,16 @@
-import React from "react";
-import Button, { ButtonType, ButtonSize } from "./components/Button/Button";
-import Menu from "./components/Menu/Menu";
-import MenuItem from "./components/Menu/MenuItem";
+// import React from "react";
+// import Button, { ButtonType, ButtonSize } from "./components/Button/Button";
+// import Menu from "./components/Menu/Menu";
+// import MenuItem from "./components/Menu/MenuItem";
+import Tooltip from "./components/Tooltip/Tooltip";
 
 function App() {
   return (
     <>
-      <Menu
+      <Tooltip title={<div>Hello World!</div>}>
+        <span>Tooltip will show on mouse enter.</span>
+      </Tooltip>
+      {/* <Menu
         defaultIndex={0}
         onSelect={(index) => {
           console.log(index);
@@ -18,7 +22,7 @@ function App() {
           cool link2
         </MenuItem>
         <MenuItem index={2}>cool link3</MenuItem>
-      </Menu>
+      </Menu> */}
       {/* <Button className="custom">Hello</Button>
       <Button autoFocus>Auto Focus</Button>
       <Button disabled>Disabled</Button>
