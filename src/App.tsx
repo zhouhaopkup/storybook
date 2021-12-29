@@ -7,9 +7,15 @@ import Tooltip from "./components/Tooltip/Tooltip";
 function App() {
   return (
     <>
-      <Tooltip title={<div>Hello World!</div>}>
-        <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      <div style={{ margin: "200px" }}>
+        <Tooltip
+          title={<div>Hello World!</div>}
+          placement="topLeft"
+          arrowPointAtCenter
+        >
+          <span>Tooltip will show on mouse enter.</span>
+        </Tooltip>
+      </div>
       {/* <Menu
         defaultIndex={0}
         onSelect={(index) => {

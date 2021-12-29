@@ -3,7 +3,7 @@ import RcTooltip from "rc-tooltip";
 import useMergedState from "rc-util/lib/hooks/useMergedState";
 import { TooltipProps as RcTooltipProps } from "rc-tooltip/lib/Tooltip";
 import { placements as Placements } from "rc-tooltip/lib/placements";
-import { AdjustOverflow, PlacementsConfig } from "./placements";
+import getPlacements, { AdjustOverflow, PlacementsConfig } from "./placements";
 import { cloneElement, isValidElement } from "../_util/reactNode";
 
 export type { AdjustOverflow, PlacementsConfig };
@@ -82,6 +82,16 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     }
     return overlay || title || "";
   };
+  const getTooltipPlacements = () => {
+    const { builtinPlacements, arrowPointAtCenter, autoAdjustOverflow } = props;
+    return (
+      builtinPlacements ||
+      getPlacements({
+        arrowPointAtCenter,
+        autoAdjustOverflow,
+      })
+    );
+  };
   let tempVisible = visible;
   if (!("visible" in props) && isNoTitle()) {
     tempVisible = false;
@@ -94,6 +104,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       visible={tempVisible}
       onVisibleChange={onVisibleChange}
       ref={ref}
+      builtinPlacements={getTooltipPlacements()}
     >
       {tempVisible
         ? cloneElement(child, { className: child.props.className })
