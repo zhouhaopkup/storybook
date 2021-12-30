@@ -1,13 +1,13 @@
 // import React from "react";
 // import Button, { ButtonType, ButtonSize } from "./components/Button/Button";
-// import Menu from "./components/Menu/Menu";
-// import MenuItem from "./components/Menu/MenuItem";
-import Tooltip from "./components/Tooltip/Tooltip";
+import Menu from "./components/Menu/Menu";
+import MenuItem from "./components/Menu/MenuItem";
+// import Tooltip from "./components/Tooltip/Tooltip";
 
 function App() {
   return (
     <>
-      <div style={{ margin: "200px" }}>
+      {/* <div style={{ margin: "200px" }}>
         <Tooltip
           title={<div>Hello World!</div>}
           placement="topLeft"
@@ -15,20 +15,18 @@ function App() {
         >
           <span>Tooltip will show on mouse enter.</span>
         </Tooltip>
-      </div>
-      {/* <Menu
+      </div> */}
+      <Menu
         defaultIndex={0}
         onSelect={(index) => {
           console.log(index);
         }}
         // mode={"vertical"}
       >
-        <MenuItem index={0}>cool link1</MenuItem>
-        <MenuItem index={1} disabled>
-          cool link2
-        </MenuItem>
-        <MenuItem index={2}>cool link3</MenuItem>
-      </Menu> */}
+        <MenuItem>cool link1</MenuItem>
+        <MenuItem disabled>cool link2</MenuItem>
+        <MenuItem>cool link3</MenuItem>
+      </Menu>
       {/* <Button className="custom">Hello</Button>
       <Button autoFocus>Auto Focus</Button>
       <Button disabled>Disabled</Button>
