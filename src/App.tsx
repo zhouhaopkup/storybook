@@ -2,6 +2,7 @@
 // import Button, { ButtonType, ButtonSize } from "./components/Button/Button";
 import Menu from "./components/Menu/Menu";
 import MenuItem from "./components/Menu/MenuItem";
+import SubMenu from "./components/Menu/SubMenu";
 // import Tooltip from "./components/Tooltip/Tooltip";
 
 function App() {
@@ -21,10 +22,15 @@ function App() {
         onSelect={(index) => {
           console.log(index);
         }}
-        // mode={"vertical"}
+        mode={"vertical"}
       >
         <MenuItem>cool link1</MenuItem>
         <MenuItem disabled>cool link2</MenuItem>
+        <SubMenu title="dropdown">
+          <MenuItem>dropdown 1</MenuItem>
+          <MenuItem>dropdown 2</MenuItem>
+          <MenuItem>dropdown 3</MenuItem>
+        </SubMenu>
         <MenuItem>cool link3</MenuItem>
       </Menu>
       {/* <Button className="custom">Hello</Button>
