@@ -18,11 +18,12 @@ function App() {
         </Tooltip>
       </div> */}
       <Menu
-        defaultIndex={0}
+        defaultIndex={"0"}
         onSelect={(index) => {
           console.log(index);
         }}
         // mode={"vertical"}
+        // defaultOpenSubMenus={["2"]}
       >
         <MenuItem>cool link1</MenuItem>
         <MenuItem disabled>cool link2</MenuItem>
