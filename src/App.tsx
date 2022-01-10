@@ -22,7 +22,7 @@ function App() {
         onSelect={(index) => {
           console.log(index);
         }}
-        mode={"vertical"}
+        // mode={"vertical"}
       >
         <MenuItem>cool link1</MenuItem>
         <MenuItem disabled>cool link2</MenuItem>
