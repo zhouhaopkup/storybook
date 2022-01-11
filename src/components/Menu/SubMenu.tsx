@@ -1,85 +1,76 @@
-import React, { useContext, FunctionComponentElement, useState } from "react";
+import * as React from "react";
+import { SubMenu as RcSubMenu, useFullPath } from "rc-menu";
+import omit from "rc-util/lib/omit";
+import MenuContext from "./MenuContext";
+import { cloneElement, isValidElement } from "../_util/reactNode";
 import classNames from "classnames";
-import { MenuContext } from "./Menu";
-import { MenuItemProps } from "./MenuItem";
+
+interface TitleEventEntity {
+  key: string;
+  domEvent: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+}
 
 export interface SubMenuProps {
-  index?: string;
-  title: string;
   className?: string;
+  disabled?: boolean;
+  level?: number;
+  title?: React.ReactNode;
+  icon?: React.ReactNode;
+  style?: React.CSSProperties;
+  onTitleClick?: (e: TitleEventEntity) => void;
+  onTitleMouseEnter?: (e: TitleEventEntity) => void;
+  onTitleMouseLeave?: (e: TitleEventEntity) => void;
+  popupOffset?: [number, number];
+  popupClassName?: string;
+  children?: React.ReactNode;
 }
-const SubMenu: React.FC<SubMenuProps> = ({
-  index,
-  title,
-  children,
-  className,
-}) => {
-  const context = useContext(MenuContext);
-  const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
-  const isOpened =
-    index && context.mode === "vertical"
-      ? openedSubMenus.includes(index)
-      : false;
-  const [menuOpen, setOpen] = useState(isOpened);
-  const classes = classNames("menu-item submenu-item", className, {
-    "is-active": context.index === index,
-  });
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpen(!menuOpen);
-  };
-  let timer: any;
-  const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
-    clearTimeout(timer);
-    e.preventDefault();
-    timer = setTimeout(() => {
-      setOpen(toggle);
-    }, 300);
-  };
-  const clickEvents =
-    context.mode === "vertical"
-      ? {
-          onClick: handleClick,
-        }
-      : {};
-  const hoverEvents =
-    context.mode !== "vertical"
-      ? {
-          onMouseEnter: (e: React.MouseEvent) => {
-            handleMouse(e, true);
-          },
-          onMouseLeave: (e: React.MouseEvent) => {
-            handleMouse(e, false);
-          },
-        }
-      : {};
-  const renderChildren = () => {
-    const subMenuClasses = classNames("submenu", {
-      "menu-opened": menuOpen,
-    });
-    const childrenComponent = React.Children.map(children, (child, i) => {
-      const childElement = child as FunctionComponentElement<MenuItemProps>;
-      if (childElement.type.displayName === "MenuItem") {
-        return React.cloneElement(childElement, {
-          index: `${index}-${i}`,
-        });
-      } else {
-        console.error(
-          "warning: SubMenu has a child which is not a MenuItem component."
-        );
-      }
-    });
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
-  };
+
+const SubMenu = (props: SubMenuProps) => {
+  const { popupClassName, icon, title } = props;
+  const context = React.useContext(MenuContext);
+  const { inlineCollapsed } = context;
+  const parentPath = useFullPath();
+  let titleNode: React.ReactNode;
+
+  if (!icon) {
+    titleNode =
+      inlineCollapsed &&
+      !parentPath.length &&
+      title &&
+      typeof title === "string" ? (
+        <div className={`inline-collapsed-noicon`}>{title.charAt(0)}</div>
+      ) : (
+        <span className={`title-content`}>{title}</span>
+      );
+  } else {
+    const titleIsSpan = isValidElement(title) && title.type === "span";
+    titleNode = (
+      <>
+        {cloneElement(icon, {
+          className: classNames(
+            isValidElement(icon) ? `uikit-${icon.props?.className}` : "",
+            `uikit-item-icon`
+          ),
+        })}
+        {titleIsSpan ? title : <span className={`title-content`}>{title}</span>}
+      </>
+    );
+  }
+
   return (
-    <li key={index} className={classes} {...hoverEvents}>
-      <div className="submenu-title" {...clickEvents}>
-        {title}
-      </div>
-      {renderChildren()}
-    </li>
+    <MenuContext.Provider
+      value={{
+        ...context,
+        firstLevel: false,
+      }}
+    >
+      <RcSubMenu
+        {...omit(props, ["icon"])}
+        title={titleNode}
+        popupClassName={classNames(`uikit-${popupClassName}`)}
+      />
+    </MenuContext.Provider>
   );
 };
 
-SubMenu.displayName = "SubMenu";
 export default SubMenu;

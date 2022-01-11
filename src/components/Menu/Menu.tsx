@@ -1,83 +1,74 @@
-import React, { createContext, useState } from "react";
-import classNames from "classnames";
-import { MenuItemProps } from "./MenuItem";
+import type { MenuProps as RcMenuProps } from "rc-menu";
+import RcMenu, { ItemGroup } from "rc-menu";
+import omit from "rc-util/lib/omit";
+import type { DirectionType } from "./MenuContext";
+import MenuContext from "./MenuContext";
+import MenuItem from "./MenuItem";
+import SubMenu from "./SubMenu";
+import MenuDivider from "./MenuDivider";
+import { cloneElement } from "../_util/reactNode";
 
-type MenuMode = "horizontal" | "vertical";
-type selectCallback = (selectIndex: string) => void;
+export type MenuMode =
+  | "vertical"
+  | "vertical-left"
+  | "vertical-right"
+  | "horizontal"
+  | "inline";
 
-export interface MenuProps {
-  defaultIndex?: string;
-  className?: string;
-  mode?: MenuMode;
-  style?: React.CSSProperties;
-  onSelect?: selectCallback;
-  defaultOpenSubMenus?: string[];
+export interface MenuProps extends RcMenuProps {
+  inlineIndent?: number;
 }
 
-interface IMenuContext {
-  index: string;
-  onSelect?: selectCallback;
-  mode?: MenuMode;
-  defaultOpenSubMenus?: string[];
-}
+export type { MenuDividerProps } from "./MenuDivider";
 
-export const MenuContext = createContext<IMenuContext>({ index: "0" });
-
-const Menu: React.FC<MenuProps> = (props) => {
-  const {
-    className,
-    mode,
-    style,
-    children,
-    defaultIndex,
-    onSelect,
-    defaultOpenSubMenus,
-  } = props;
-  const [currentActive, setActive] = useState(defaultIndex);
-  const classes = classNames("menu", className, {
-    "menu-vertical": mode === "vertical",
-    "menu-horizontal": mode !== "vertical",
-  });
-  const handleClick = (index: string) => {
-    setActive(index);
-    if (onSelect) {
-      onSelect(index);
-    }
-  };
-  const passedContext: IMenuContext = {
-    index: currentActive ? currentActive : "0",
-    onSelect: handleClick,
-    mode,
-    defaultOpenSubMenus,
-  };
-  const renderChildren = () => {
-    return React.Children.map(children, (child, index) => {
-      const childElement = child as React.FunctionComponentElement<MenuItemProps>;
-      const { displayName } = childElement.type;
-      if (displayName === "MenuItem" || displayName === "SubMenu") {
-        return React.cloneElement(childElement, {
-          index: index.toString(),
-        });
-      } else {
-        console.error(
-          "warning: Menu has a child which is not a MenuItem component."
-        );
-      }
-    });
-  };
-  return (
-    <ul className={classes} style={style} data-testid="test-menu">
-      <MenuContext.Provider value={passedContext}>
-        {renderChildren()}
-      </MenuContext.Provider>
-    </ul>
-  );
+type InternalMenuProps = MenuProps & {
+  collapsedWidth?: string | number;
 };
 
-Menu.defaultProps = {
-  defaultIndex: "0",
-  mode: "horizontal",
-  defaultOpenSubMenus: [],
+interface renderMenuProps {
+  getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement;
+  direction?: DirectionType;
+}
+
+const InternalMenu = (props: InternalMenuProps) => {
+  const renderMenu = ({ getPopupContainer, direction }: renderMenuProps) => {
+    const { className, expandIcon, ...restProps } = props;
+    const currentPrefixCls = "uikit";
+    const passedProps = omit(restProps, ["collapsedWidth"]);
+    return (
+      <MenuContext.Provider
+        value={{
+          prefixCls: currentPrefixCls,
+          inlineCollapsed: false,
+          direction,
+          firstLevel: true,
+        }}
+      >
+        <RcMenu
+          prefixCls={`${currentPrefixCls}-menu`}
+          getPopupContainer={getPopupContainer}
+          {...passedProps}
+          direction={direction}
+          expandIcon={cloneElement(expandIcon, {
+            className: `submenu-expand-icon`,
+          })}
+        />
+      </MenuContext.Provider>
+    );
+  };
+  return <>{renderMenu({})}</>;
+};
+
+const Menu = (props: MenuProps) => {
+  return <InternalMenu {...props} />;
+};
+Menu.ItemGroup = ItemGroup;
+Menu.Item = MenuItem;
+Menu.SubMenu = SubMenu;
+Menu.Divider = MenuDivider;
+
+InternalMenu.defaultProps = {
+  theme: "light",
 };
 
 export default Menu;

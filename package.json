@@ -16,6 +16,8 @@
     "@types/react-dom": "^17.0.0",
     "classnames": "^2.3.1",
     "node-sass": "^4.14.1",
+    "rc-dropdown": "^3.2.2",
+    "rc-menu": "^9.2.1",
     "rc-tooltip": "^5.1.1",
     "rc-trigger": "^5.2.10",
     "rc-util": "^5.16.1",

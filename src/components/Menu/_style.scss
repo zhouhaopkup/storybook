@@ -1,103 +1,1162 @@
-.menu {
-  display: flex;
-  flex-wrap: wrap;
+.uikit-menu-item-danger.uikit-menu-item {
+  color: #ff4d4f;
+}
+.uikit-menu-item-danger.uikit-menu-item:hover,
+.uikit-menu-item-danger.uikit-menu-item-active {
+  color: #ff4d4f;
+}
+.uikit-menu-item-danger.uikit-menu-item:active {
+  background: #fff1f0;
+}
+.uikit-menu-item-danger.uikit-menu-item-selected {
+  color: #ff4d4f;
+}
+.uikit-menu-item-danger.uikit-menu-item-selected > a,
+.uikit-menu-item-danger.uikit-menu-item-selected > a:hover {
+  color: #ff4d4f;
+}
+.uikit-menu:not(.uikit-menu-horizontal)
+  .uikit-menu-item-danger.uikit-menu-item-selected {
+  background-color: #fff1f0;
+}
+.uikit-menu-inline .uikit-menu-item-danger.uikit-menu-item::after {
+  border-right-color: #ff4d4f;
+}
+.uikit-menu-dark .uikit-menu-item-danger.uikit-menu-item,
+.uikit-menu-dark .uikit-menu-item-danger.uikit-menu-item:hover,
+.uikit-menu-dark .uikit-menu-item-danger.uikit-menu-item > a {
+  color: #ff4d4f;
+}
+.uikit-menu-dark.uikit-menu-dark:not(.uikit-menu-horizontal)
+  .uikit-menu-item-danger.uikit-menu-item-selected {
+  color: #fff;
+  background-color: #ff4d4f;
+}
+.uikit-menu {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  font-feature-settings: "tnum";
+  margin-bottom: 0;
   padding-left: 0;
-  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 0;
+  text-align: left;
   list-style: none;
-  border-bottom: $menu-border-width solid $menu-border-color;
-  box-shadow: $menu-box-shadow;
-  > .menu-item {
-    padding: $menu-item-padding-y $menu-item-padding-x;
-    cursor: pointer;
-    transition: $menu-transition;
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-    &.is-disabled {
-      color: $menu-item-disabled-color;
-      pointer-events: none;
-      cursor: default;
-    }
-    &.is-active,
-    &:hover {
-      color: $menu-item-active-color;
-      border-bottom: $menu-item-active-border-width solid
-        $menu-item-active-color;
-    }
-  }
-  .submenu-item {
-    position: relative;
-    .submenu-title {
-      display: flex;
-      align-items: center;
-    }
-    .arrow-icon {
-      transition: transform 0.25s ease-in-out;
-      margin-left: 3px;
-    }
-    &:hover {
-      .arrow-icon {
-        transform: rotate(180deg);
-      }
-    }
-  }
-  .is-vertical {
-    .arrow-icon {
-      transform: rotate(0deg) !important;
-    }
-  }
-  .is-vertical.is-opened {
-    .arrow-icon {
-      transform: rotate(180deg) !important;
-    }
-  }
-  .submenu {
-    display: none;
-    list-style: none;
-    padding-left: 0;
-    white-space: nowrap;
-    //transition: $menu-transition;
-    .menu-item {
-      padding: $menu-item-padding-y $menu-item-padding-x;
-      cursor: pointer;
-      transition: $menu-transition;
-      color: $body-color;
-      &.is-active,
-      &:hover {
-        color: $menu-item-active-color !important;
-      }
-    }
-  }
-  .submenu.menu-opened {
-    display: block;
-  }
+  background: #fff;
+  outline: none;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s, width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
 }
-.menu-horizontal {
-  > .menu-item {
-    border-bottom: $menu-item-active-border-width solid transparent;
-  }
-  .submenu {
-    position: absolute;
-    background: $white;
-    z-index: 100;
-    top: calc(100% + 8px);
-    left: 0;
-    border: $menu-border-width solid $menu-border-color;
-    box-shadow: $submenu-box-shadow;
-  }
+.uikit-menu::before {
+  display: table;
+  content: "";
 }
-.menu-vertical {
-  flex-direction: column;
-  border-bottom: 0px;
-  margin: 10px 20px;
-  border-right: $menu-border-width solid $menu-border-color;
-  > .menu-item {
-    border-left: $menu-item-active-border-width solid transparent;
-    &.is-active,
-    &:hover {
-      border-bottom: 0px;
-      border-left: $menu-item-active-border-width solid $menu-item-active-color;
-    }
-  }
+.uikit-menu::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.uikit-menu.uikit-menu-root:focus-visible {
+  box-shadow: 0 0 0 2px #e6f7ff;
+}
+.uikit-menu ul,
+.uikit-menu ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.uikit-menu-overflow {
+  display: flex;
+}
+.uikit-menu-overflow-item {
+  flex: none;
+}
+.uikit-menu-hidden,
+.uikit-menu-submenu-hidden {
+  display: none;
+}
+.uikit-menu-item-group-title {
+  height: 1.5715;
+  padding: 8px 16px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  line-height: 1.5715;
+  transition: all 0.3s;
+}
+.uikit-menu-horizontal .uikit-menu-submenu {
+  transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-submenu,
+.uikit-menu-submenu-inline {
+  transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    padding 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-submenu-selected {
+  color: #1890ff;
+}
+.uikit-menu-item:active,
+.uikit-menu-submenu-title:active {
+  background: #e6f7ff;
+}
+.uikit-menu-submenu .uikit-menu-sub {
+  cursor: initial;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-title-content {
+  transition: color 0.3s;
+}
+.uikit-menu-item a {
+  color: rgba(0, 0, 0, 0.85);
+}
+.uikit-menu-item a:hover {
+  color: #1890ff;
+}
+.uikit-menu-item a::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  content: "";
+}
+.uikit-menu-item > .ant-badge a {
+  color: rgba(0, 0, 0, 0.85);
+}
+.uikit-menu-item > .ant-badge a:hover {
+  color: #1890ff;
+}
+.uikit-menu-item-divider {
+  overflow: hidden;
+  line-height: 0;
+  border-color: #f0f0f0;
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+.uikit-menu-item-divider-dashed {
+  border-style: dashed;
+}
+.uikit-menu-horizontal .uikit-menu-item,
+.uikit-menu-horizontal .uikit-menu-submenu {
+  margin-top: -1px;
+}
+.uikit-menu-horizontal > .uikit-menu-item:hover,
+.uikit-menu-horizontal > .uikit-menu-item-active,
+.uikit-menu-horizontal > .uikit-menu-submenu .uikit-menu-submenu-title:hover {
+  background-color: transparent;
+}
+.uikit-menu-item-selected {
+  color: #1890ff;
+}
+.uikit-menu-item-selected a,
+.uikit-menu-item-selected a:hover {
+  color: #1890ff;
+}
+.uikit-menu:not(.uikit-menu-horizontal) .uikit-menu-item-selected {
+  background-color: #e6f7ff;
+}
+.uikit-menu-inline,
+.uikit-menu-vertical,
+.uikit-menu-vertical-left {
+  border-right: 1px solid #f0f0f0;
+}
+.uikit-menu-vertical-right {
+  border-left: 1px solid #f0f0f0;
+}
+.uikit-menu-vertical.uikit-menu-sub,
+.uikit-menu-vertical-left.uikit-menu-sub,
+.uikit-menu-vertical-right.uikit-menu-sub {
+  min-width: 160px;
+  max-height: calc(100vh - 100px);
+  padding: 0;
+  overflow: hidden;
+  border-right: 0;
+}
+.uikit-menu-vertical.uikit-menu-sub:not([class*="-active"]),
+.uikit-menu-vertical-left.uikit-menu-sub:not([class*="-active"]),
+.uikit-menu-vertical-right.uikit-menu-sub:not([class*="-active"]) {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.uikit-menu-vertical.uikit-menu-sub .uikit-menu-item,
+.uikit-menu-vertical-left.uikit-menu-sub .uikit-menu-item,
+.uikit-menu-vertical-right.uikit-menu-sub .uikit-menu-item {
+  left: 0;
+  margin-left: 0;
+  border-right: 0;
+}
+.uikit-menu-vertical.uikit-menu-sub .uikit-menu-item::after,
+.uikit-menu-vertical-left.uikit-menu-sub .uikit-menu-item::after,
+.uikit-menu-vertical-right.uikit-menu-sub .uikit-menu-item::after {
+  border-right: 0;
+}
+.uikit-menu-vertical.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-vertical-left.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-vertical-right.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-vertical.uikit-menu-sub > .uikit-menu-submenu,
+.uikit-menu-vertical-left.uikit-menu-sub > .uikit-menu-submenu,
+.uikit-menu-vertical-right.uikit-menu-sub > .uikit-menu-submenu {
+  transform-origin: 0 0;
+}
+.uikit-menu-horizontal.uikit-menu-sub {
+  min-width: 114px;
+}
+.uikit-menu-horizontal .uikit-menu-item,
+.uikit-menu-horizontal .uikit-menu-submenu-title {
+  transition: border-color 0.3s, background 0.3s;
+}
+.uikit-menu-item,
+.uikit-menu-submenu-title {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s,
+    padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-item .uikit-menu-item-icon,
+.uikit-menu-submenu-title .uikit-menu-item-icon,
+.uikit-menu-item .anticon,
+.uikit-menu-submenu-title .anticon {
+  min-width: 14px;
+  font-size: 14px;
+  transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+    margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.3s;
+}
+.uikit-menu-item .uikit-menu-item-icon + span,
+.uikit-menu-submenu-title .uikit-menu-item-icon + span,
+.uikit-menu-item .anticon + span,
+.uikit-menu-submenu-title .anticon + span {
+  margin-left: 10px;
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), margin 0.3s,
+    color 0.3s;
+}
+.uikit-menu-item .uikit-menu-item-icon.svg,
+.uikit-menu-submenu-title .uikit-menu-item-icon.svg {
+  vertical-align: -0.125em;
+}
+.uikit-menu-item.uikit-menu-item-only-child > .anticon,
+.uikit-menu-submenu-title.uikit-menu-item-only-child > .anticon,
+.uikit-menu-item.uikit-menu-item-only-child > .uikit-menu-item-icon,
+.uikit-menu-submenu-title.uikit-menu-item-only-child > .uikit-menu-item-icon {
+  margin-right: 0;
+}
+.uikit-menu-item:focus-visible,
+.uikit-menu-submenu-title:focus-visible {
+  box-shadow: 0 0 0 2px #e6f7ff;
+}
+.uikit-menu > .uikit-menu-item-divider {
+  margin: 1px 0;
+  padding: 0;
+}
+.uikit-menu-submenu-popup {
+  position: absolute;
+  z-index: 1050;
+  background: transparent;
+  border-radius: 2px;
+  box-shadow: none;
+  transform-origin: 0 0;
+}
+.uikit-menu-submenu-popup::before {
+  position: absolute;
+  top: -7px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.0001;
+  content: " ";
+}
+.uikit-menu-submenu-placement-rightTop::before {
+  top: 0;
+  left: -7px;
+}
+.uikit-menu-submenu > .uikit-menu {
+  background-color: #fff;
+  border-radius: 2px;
+}
+.uikit-menu-submenu > .uikit-menu-submenu-title::after {
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-submenu-popup > .uikit-menu {
+  background-color: #fff;
+}
+.uikit-menu-submenu-expand-icon,
+.uikit-menu-submenu-arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 10px;
+  color: rgba(0, 0, 0, 0.85);
+  transform: translateY(-50%);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-submenu-arrow::before,
+.uikit-menu-submenu-arrow::after {
+  position: absolute;
+  width: 6px;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  content: "";
+}
+.uikit-menu-submenu-arrow::before {
+  transform: rotate(45deg) translateY(-2.5px);
+}
+.uikit-menu-submenu-arrow::after {
+  transform: rotate(-45deg) translateY(2.5px);
+}
+.uikit-menu-submenu:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-expand-icon,
+.uikit-menu-submenu:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow {
+  color: #1890ff;
+}
+.uikit-menu-inline-collapsed .uikit-menu-submenu-arrow::before,
+.uikit-menu-submenu-inline .uikit-menu-submenu-arrow::before {
+  transform: rotate(-45deg) translateX(2.5px);
+}
+.uikit-menu-inline-collapsed .uikit-menu-submenu-arrow::after,
+.uikit-menu-submenu-inline .uikit-menu-submenu-arrow::after {
+  transform: rotate(45deg) translateX(-2.5px);
+}
+.uikit-menu-submenu-horizontal .uikit-menu-submenu-arrow {
+  display: none;
+}
+.uikit-menu-submenu-open.uikit-menu-submenu-inline
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow {
+  transform: translateY(-2px);
+}
+.uikit-menu-submenu-open.uikit-menu-submenu-inline
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after {
+  transform: rotate(-45deg) translateX(-2.5px);
+}
+.uikit-menu-submenu-open.uikit-menu-submenu-inline
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before {
+  transform: rotate(45deg) translateX(2.5px);
+}
+.uikit-menu-vertical .uikit-menu-submenu-selected,
+.uikit-menu-vertical-left .uikit-menu-submenu-selected,
+.uikit-menu-vertical-right .uikit-menu-submenu-selected {
+  color: #1890ff;
+}
+.uikit-menu-horizontal {
+  line-height: 46px;
+  border: 0;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: none;
+}
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu {
+  margin-top: -1px;
+  margin-bottom: 0;
+  padding: 0 20px;
+}
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item:hover,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu:hover,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-active,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu-active,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-open,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu-open,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-selected,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu-selected {
+  color: #1890ff;
+}
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item:hover::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu:hover::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-active::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark)
+  > .uikit-menu-submenu-active::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-open::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-submenu-open::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark) > .uikit-menu-item-selected::after,
+.uikit-menu-horizontal:not(.uikit-menu-dark)
+  > .uikit-menu-submenu-selected::after {
+  border-bottom: 2px solid #1890ff;
+}
+.uikit-menu-horizontal > .uikit-menu-item,
+.uikit-menu-horizontal > .uikit-menu-submenu {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.uikit-menu-horizontal > .uikit-menu-item::after,
+.uikit-menu-horizontal > .uikit-menu-submenu::after {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  left: 20px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  content: "";
+}
+.uikit-menu-horizontal > .uikit-menu-submenu > .uikit-menu-submenu-title {
+  padding: 0;
+}
+.uikit-menu-horizontal > .uikit-menu-item a {
+  color: rgba(0, 0, 0, 0.85);
+}
+.uikit-menu-horizontal > .uikit-menu-item a:hover {
+  color: #1890ff;
+}
+.uikit-menu-horizontal > .uikit-menu-item a::before {
+  bottom: -2px;
+}
+.uikit-menu-horizontal > .uikit-menu-item-selected a {
+  color: #1890ff;
+}
+.uikit-menu-horizontal::after {
+  display: block;
+  clear: both;
+  height: 0;
+  content: "\20";
+}
+.uikit-menu-vertical .uikit-menu-item,
+.uikit-menu-vertical-left .uikit-menu-item,
+.uikit-menu-vertical-right .uikit-menu-item,
+.uikit-menu-inline .uikit-menu-item {
+  position: relative;
+}
+.uikit-menu-vertical .uikit-menu-item::after,
+.uikit-menu-vertical-left .uikit-menu-item::after,
+.uikit-menu-vertical-right .uikit-menu-item::after,
+.uikit-menu-inline .uikit-menu-item::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-right: 3px solid #1890ff;
+  transform: scaleY(0.0001);
+  opacity: 0;
+  transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  content: "";
+}
+.uikit-menu-vertical .uikit-menu-item,
+.uikit-menu-vertical-left .uikit-menu-item,
+.uikit-menu-vertical-right .uikit-menu-item,
+.uikit-menu-inline .uikit-menu-item,
+.uikit-menu-vertical .uikit-menu-submenu-title,
+.uikit-menu-vertical-left .uikit-menu-submenu-title,
+.uikit-menu-vertical-right .uikit-menu-submenu-title,
+.uikit-menu-inline .uikit-menu-submenu-title {
+  height: 40px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  overflow: hidden;
+  line-height: 40px;
+  text-overflow: ellipsis;
+}
+.uikit-menu-vertical .uikit-menu-submenu,
+.uikit-menu-vertical-left .uikit-menu-submenu,
+.uikit-menu-vertical-right .uikit-menu-submenu,
+.uikit-menu-inline .uikit-menu-submenu {
+  padding-bottom: 0.02px;
+}
+.uikit-menu-vertical .uikit-menu-item:not(:last-child),
+.uikit-menu-vertical-left .uikit-menu-item:not(:last-child),
+.uikit-menu-vertical-right .uikit-menu-item:not(:last-child),
+.uikit-menu-inline .uikit-menu-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.uikit-menu-vertical > .uikit-menu-item,
+.uikit-menu-vertical-left > .uikit-menu-item,
+.uikit-menu-vertical-right > .uikit-menu-item,
+.uikit-menu-inline > .uikit-menu-item,
+.uikit-menu-vertical > .uikit-menu-submenu > .uikit-menu-submenu-title,
+.uikit-menu-vertical-left > .uikit-menu-submenu > .uikit-menu-submenu-title,
+.uikit-menu-vertical-right > .uikit-menu-submenu > .uikit-menu-submenu-title,
+.uikit-menu-inline > .uikit-menu-submenu > .uikit-menu-submenu-title {
+  height: 40px;
+  line-height: 40px;
+}
+.uikit-menu-vertical .uikit-menu-item-group-list .uikit-menu-submenu-title,
+.uikit-menu-vertical .uikit-menu-submenu-title {
+  padding-right: 34px;
+}
+.uikit-menu-inline {
+  width: 100%;
+}
+.uikit-menu-inline .uikit-menu-selected::after,
+.uikit-menu-inline .uikit-menu-item-selected::after {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.uikit-menu-inline .uikit-menu-item,
+.uikit-menu-inline .uikit-menu-submenu-title {
+  width: calc(100% + 1px);
+}
+.uikit-menu-inline .uikit-menu-item-group-list .uikit-menu-submenu-title,
+.uikit-menu-inline .uikit-menu-submenu-title {
+  padding-right: 34px;
+}
+.uikit-menu-inline.uikit-menu-root .uikit-menu-item,
+.uikit-menu-inline.uikit-menu-root .uikit-menu-submenu-title {
+  display: flex;
+  align-items: center;
+  transition: border-color 0.3s, background 0.3s,
+    padding 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.uikit-menu-inline.uikit-menu-root .uikit-menu-item > .uikit-menu-title-content,
+.uikit-menu-inline.uikit-menu-root
+  .uikit-menu-submenu-title
+  > .uikit-menu-title-content {
+  flex: auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.uikit-menu-inline.uikit-menu-root .uikit-menu-item > *,
+.uikit-menu-inline.uikit-menu-root .uikit-menu-submenu-title > * {
+  flex: none;
+}
+.uikit-menu.uikit-menu-inline-collapsed {
+  width: 80px;
+}
+.uikit-menu.uikit-menu-inline-collapsed > .uikit-menu-item,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title {
+  left: 0;
+  padding: 0 calc(50% - 16px / 2);
+  text-overflow: clip;
+}
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item
+  .uikit-menu-submenu-arrow,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item
+  .uikit-menu-submenu-arrow,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow {
+  opacity: 0;
+}
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item
+  .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item
+  .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed > .uikit-menu-item .anticon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item
+  .anticon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .anticon,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .anticon {
+  margin: 0;
+  font-size: 16px;
+  line-height: 40px;
+}
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item
+  .uikit-menu-item-icon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item
+  .uikit-menu-item-icon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-item-icon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .uikit-menu-item-icon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed > .uikit-menu-item .anticon + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-item
+  .anticon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-item-group
+  > .uikit-menu-item-group-list
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .anticon
+  + span,
+.uikit-menu.uikit-menu-inline-collapsed
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title
+  .anticon
+  + span {
+  display: inline-block;
+  opacity: 0;
+}
+.uikit-menu.uikit-menu-inline-collapsed .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed .anticon {
+  display: inline-block;
+}
+.uikit-menu.uikit-menu-inline-collapsed-tooltip {
+  pointer-events: none;
+}
+.uikit-menu.uikit-menu-inline-collapsed-tooltip .uikit-menu-item-icon,
+.uikit-menu.uikit-menu-inline-collapsed-tooltip .anticon {
+  display: none;
+}
+.uikit-menu.uikit-menu-inline-collapsed-tooltip a {
+  color: rgba(255, 255, 255, 0.85);
+}
+.uikit-menu.uikit-menu-inline-collapsed .uikit-menu-item-group-title {
+  padding-right: 4px;
+  padding-left: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.uikit-menu-item-group-list {
+  margin: 0;
+  padding: 0;
+}
+.uikit-menu-item-group-list .uikit-menu-item,
+.uikit-menu-item-group-list .uikit-menu-submenu-title {
+  padding: 0 16px 0 28px;
+}
+.uikit-menu-root.uikit-menu-vertical,
+.uikit-menu-root.uikit-menu-vertical-left,
+.uikit-menu-root.uikit-menu-vertical-right,
+.uikit-menu-root.uikit-menu-inline {
+  box-shadow: none;
+}
+.uikit-menu-root.uikit-menu-inline-collapsed
+  .uikit-menu-item
+  > .uikit-menu-inline-collapsed-noicon,
+.uikit-menu-root.uikit-menu-inline-collapsed
+  .uikit-menu-submenu
+  .uikit-menu-submenu-title
+  > .uikit-menu-inline-collapsed-noicon {
+  font-size: 16px;
+  text-align: center;
+}
+.uikit-menu-sub.uikit-menu-inline {
+  padding: 0;
+  background: #fafafa;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.uikit-menu-sub.uikit-menu-inline > .uikit-menu-item,
+.uikit-menu-sub.uikit-menu-inline
+  > .uikit-menu-submenu
+  > .uikit-menu-submenu-title {
+  height: 40px;
+  line-height: 40px;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+.uikit-menu-sub.uikit-menu-inline .uikit-menu-item-group-title {
+  padding-left: 32px;
+}
+.uikit-menu-item-disabled,
+.uikit-menu-submenu-disabled {
+  color: rgba(0, 0, 0, 0.25) !important;
+  background: none;
+  cursor: not-allowed;
+}
+.uikit-menu-item-disabled::after,
+.uikit-menu-submenu-disabled::after {
+  border-color: transparent !important;
+}
+.uikit-menu-item-disabled a,
+.uikit-menu-submenu-disabled a {
+  color: rgba(0, 0, 0, 0.25) !important;
+  pointer-events: none;
+}
+.uikit-menu-item-disabled > .uikit-menu-submenu-title,
+.uikit-menu-submenu-disabled > .uikit-menu-submenu-title {
+  color: rgba(0, 0, 0, 0.25) !important;
+  cursor: not-allowed;
+}
+.uikit-menu-item-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-submenu-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-item-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-submenu-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+.ant-layout-header .uikit-menu {
+  line-height: inherit;
+}
+.uikit-menu-inline-collapsed-tooltip a,
+.uikit-menu-inline-collapsed-tooltip a:hover {
+  color: #fff;
+}
+.uikit-menu-light .uikit-menu-item:hover,
+.uikit-menu-light .uikit-menu-item-active,
+.uikit-menu-light .uikit-menu:not(.uikit-menu-inline) .uikit-menu-submenu-open,
+.uikit-menu-light .uikit-menu-submenu-active,
+.uikit-menu-light .uikit-menu-submenu-title:hover {
+  color: #1890ff;
+}
+.uikit-menu.uikit-menu-dark,
+.uikit-menu-dark .uikit-menu-sub,
+.uikit-menu.uikit-menu-dark .uikit-menu-sub {
+  color: rgba(255, 255, 255, 0.65);
+  background: #001529;
+}
+.uikit-menu.uikit-menu-dark .uikit-menu-submenu-title .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow,
+.uikit-menu.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow {
+  opacity: 0.45;
+  transition: all 0.3s;
+}
+.uikit-menu.uikit-menu-dark
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after,
+.uikit-menu.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after,
+.uikit-menu.uikit-menu-dark
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before,
+.uikit-menu.uikit-menu-dark
+  .uikit-menu-sub
+  .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before {
+  background: #fff;
+}
+.uikit-menu-dark.uikit-menu-submenu-popup {
+  background: transparent;
+}
+.uikit-menu-dark .uikit-menu-inline.uikit-menu-sub {
+  background: #000c17;
+}
+.uikit-menu-dark.uikit-menu-horizontal {
+  border-bottom: 0;
+}
+.uikit-menu-dark.uikit-menu-horizontal > .uikit-menu-item,
+.uikit-menu-dark.uikit-menu-horizontal > .uikit-menu-submenu {
+  top: 0;
+  margin-top: 0;
+  padding: 0 20px;
+  border-color: #001529;
+  border-bottom: 0;
+}
+.uikit-menu-dark.uikit-menu-horizontal > .uikit-menu-item:hover {
+  background-color: #1890ff;
+}
+.uikit-menu-dark.uikit-menu-horizontal > .uikit-menu-item > a::before {
+  bottom: 0;
+}
+.uikit-menu-dark .uikit-menu-item,
+.uikit-menu-dark .uikit-menu-item-group-title,
+.uikit-menu-dark .uikit-menu-item > a,
+.uikit-menu-dark .uikit-menu-item > span > a {
+  color: rgba(255, 255, 255, 0.65);
+}
+.uikit-menu-dark.uikit-menu-inline,
+.uikit-menu-dark.uikit-menu-vertical,
+.uikit-menu-dark.uikit-menu-vertical-left,
+.uikit-menu-dark.uikit-menu-vertical-right {
+  border-right: 0;
+}
+.uikit-menu-dark.uikit-menu-inline .uikit-menu-item,
+.uikit-menu-dark.uikit-menu-vertical .uikit-menu-item,
+.uikit-menu-dark.uikit-menu-vertical-left .uikit-menu-item,
+.uikit-menu-dark.uikit-menu-vertical-right .uikit-menu-item {
+  left: 0;
+  margin-left: 0;
+  border-right: 0;
+}
+.uikit-menu-dark.uikit-menu-inline .uikit-menu-item::after,
+.uikit-menu-dark.uikit-menu-vertical .uikit-menu-item::after,
+.uikit-menu-dark.uikit-menu-vertical-left .uikit-menu-item::after,
+.uikit-menu-dark.uikit-menu-vertical-right .uikit-menu-item::after {
+  border-right: 0;
+}
+.uikit-menu-dark.uikit-menu-inline .uikit-menu-item,
+.uikit-menu-dark.uikit-menu-inline .uikit-menu-submenu-title {
+  width: 100%;
+}
+.uikit-menu-dark .uikit-menu-item:hover,
+.uikit-menu-dark .uikit-menu-item-active,
+.uikit-menu-dark .uikit-menu-submenu-active,
+.uikit-menu-dark .uikit-menu-submenu-open,
+.uikit-menu-dark .uikit-menu-submenu-selected,
+.uikit-menu-dark .uikit-menu-submenu-title:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.uikit-menu-dark .uikit-menu-item:hover > a,
+.uikit-menu-dark .uikit-menu-item-active > a,
+.uikit-menu-dark .uikit-menu-submenu-active > a,
+.uikit-menu-dark .uikit-menu-submenu-open > a,
+.uikit-menu-dark .uikit-menu-submenu-selected > a,
+.uikit-menu-dark .uikit-menu-submenu-title:hover > a,
+.uikit-menu-dark .uikit-menu-item:hover > span > a,
+.uikit-menu-dark .uikit-menu-item-active > span > a,
+.uikit-menu-dark .uikit-menu-submenu-active > span > a,
+.uikit-menu-dark .uikit-menu-submenu-open > span > a,
+.uikit-menu-dark .uikit-menu-submenu-selected > span > a,
+.uikit-menu-dark .uikit-menu-submenu-title:hover > span > a {
+  color: #fff;
+}
+.uikit-menu-dark
+  .uikit-menu-item:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-item-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-submenu-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-submenu-open
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-submenu-selected
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow,
+.uikit-menu-dark
+  .uikit-menu-submenu-title:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow {
+  opacity: 1;
+}
+.uikit-menu-dark
+  .uikit-menu-item:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-item-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-submenu-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-submenu-open
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-submenu-selected
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-submenu-title:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-item:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-item-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-submenu-active
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-submenu-open
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-submenu-selected
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-submenu-title:hover
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before {
+  background: #fff;
+}
+.uikit-menu-dark .uikit-menu-item:hover {
+  background-color: transparent;
+}
+.uikit-menu-dark.uikit-menu-dark:not(.uikit-menu-horizontal)
+  .uikit-menu-item-selected {
+  background-color: #1890ff;
+}
+.uikit-menu-dark .uikit-menu-item-selected {
+  color: #fff;
+  border-right: 0;
+}
+.uikit-menu-dark .uikit-menu-item-selected::after {
+  border-right: 0;
+}
+.uikit-menu-dark .uikit-menu-item-selected > a,
+.uikit-menu-dark .uikit-menu-item-selected > span > a,
+.uikit-menu-dark .uikit-menu-item-selected > a:hover,
+.uikit-menu-dark .uikit-menu-item-selected > span > a:hover {
+  color: #fff;
+}
+.uikit-menu-dark .uikit-menu-item-selected .uikit-menu-item-icon,
+.uikit-menu-dark .uikit-menu-item-selected .anticon {
+  color: #fff;
+}
+.uikit-menu-dark .uikit-menu-item-selected .uikit-menu-item-icon + span,
+.uikit-menu-dark .uikit-menu-item-selected .anticon + span {
+  color: #fff;
+}
+.uikit-menu.uikit-menu-dark .uikit-menu-item-selected,
+.uikit-menu-submenu-popup.uikit-menu-dark .uikit-menu-item-selected {
+  background-color: #1890ff;
+}
+.uikit-menu-dark .uikit-menu-item-disabled,
+.uikit-menu-dark .uikit-menu-submenu-disabled,
+.uikit-menu-dark .uikit-menu-item-disabled > a,
+.uikit-menu-dark .uikit-menu-submenu-disabled > a,
+.uikit-menu-dark .uikit-menu-item-disabled > span > a,
+.uikit-menu-dark .uikit-menu-submenu-disabled > span > a {
+  color: rgba(255, 255, 255, 0.35) !important;
+  opacity: 0.8;
+}
+.uikit-menu-dark .uikit-menu-item-disabled > .uikit-menu-submenu-title,
+.uikit-menu-dark .uikit-menu-submenu-disabled > .uikit-menu-submenu-title {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+.uikit-menu-dark
+  .uikit-menu-item-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-submenu-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::before,
+.uikit-menu-dark
+  .uikit-menu-item-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after,
+.uikit-menu-dark
+  .uikit-menu-submenu-disabled
+  > .uikit-menu-submenu-title
+  > .uikit-menu-submenu-arrow::after {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+.uikit-menu.uikit-menu-rtl {
+  direction: rtl;
+  text-align: right;
+}
+.uikit-menu-rtl .uikit-menu-item-group-title {
+  text-align: right;
+}
+.uikit-menu-rtl.uikit-menu-inline,
+.uikit-menu-rtl.uikit-menu-vertical {
+  border-right: none;
+  border-left: 1px solid #f0f0f0;
+}
+.uikit-menu-rtl.uikit-menu-dark.uikit-menu-inline,
+.uikit-menu-rtl.uikit-menu-dark.uikit-menu-vertical {
+  border-left: none;
+}
+.uikit-menu-rtl.uikit-menu-vertical.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical-left.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical-right.uikit-menu-sub > .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical.uikit-menu-sub > .uikit-menu-submenu,
+.uikit-menu-rtl.uikit-menu-vertical-left.uikit-menu-sub > .uikit-menu-submenu,
+.uikit-menu-rtl.uikit-menu-vertical-right.uikit-menu-sub > .uikit-menu-submenu {
+  transform-origin: top right;
+}
+.uikit-menu-rtl .uikit-menu-item .uikit-menu-item-icon,
+.uikit-menu-rtl .uikit-menu-submenu-title .uikit-menu-item-icon,
+.uikit-menu-rtl .uikit-menu-item .anticon,
+.uikit-menu-rtl .uikit-menu-submenu-title .anticon {
+  margin-right: auto;
+  margin-left: 10px;
+}
+.uikit-menu-rtl
+  .uikit-menu-item.uikit-menu-item-only-child
+  > .uikit-menu-item-icon,
+.uikit-menu-rtl
+  .uikit-menu-submenu-title.uikit-menu-item-only-child
+  > .uikit-menu-item-icon,
+.uikit-menu-rtl .uikit-menu-item.uikit-menu-item-only-child > .anticon,
+.uikit-menu-rtl
+  .uikit-menu-submenu-title.uikit-menu-item-only-child
+  > .anticon {
+  margin-left: 0;
+}
+.uikit-menu-submenu-rtl.uikit-menu-submenu-popup {
+  transform-origin: 100% 0;
+}
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-left
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-right
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow,
+.uikit-menu-rtl
+  .uikit-menu-submenu-inline
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow {
+  right: auto;
+  left: 16px;
+}
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-left
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-right
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::before {
+  transform: rotate(-45deg) translateY(-2px);
+}
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-left
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after,
+.uikit-menu-rtl
+  .uikit-menu-submenu-vertical-right
+  > .uikit-menu-submenu-title
+  .uikit-menu-submenu-arrow::after {
+  transform: rotate(45deg) translateY(2px);
+}
+.uikit-menu-rtl.uikit-menu-vertical .uikit-menu-item::after,
+.uikit-menu-rtl.uikit-menu-vertical-left .uikit-menu-item::after,
+.uikit-menu-rtl.uikit-menu-vertical-right .uikit-menu-item::after,
+.uikit-menu-rtl.uikit-menu-inline .uikit-menu-item::after {
+  right: auto;
+  left: 0;
+}
+.uikit-menu-rtl.uikit-menu-vertical .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical-left .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical-right .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-inline .uikit-menu-item,
+.uikit-menu-rtl.uikit-menu-vertical .uikit-menu-submenu-title,
+.uikit-menu-rtl.uikit-menu-vertical-left .uikit-menu-submenu-title,
+.uikit-menu-rtl.uikit-menu-vertical-right .uikit-menu-submenu-title,
+.uikit-menu-rtl.uikit-menu-inline .uikit-menu-submenu-title {
+  text-align: right;
+}
+.uikit-menu-rtl.uikit-menu-inline .uikit-menu-submenu-title {
+  padding-right: 0;
+  padding-left: 34px;
+}
+.uikit-menu-rtl.uikit-menu-vertical .uikit-menu-submenu-title {
+  padding-right: 16px;
+  padding-left: 34px;
+}
+.uikit-menu-rtl.uikit-menu-inline-collapsed.uikit-menu-vertical
+  .uikit-menu-submenu-title {
+  padding: 0 calc(50% - 16px / 2);
+}
+.uikit-menu-rtl .uikit-menu-item-group-list .uikit-menu-item,
+.uikit-menu-rtl .uikit-menu-item-group-list .uikit-menu-submenu-title {
+  padding: 0 28px 0 16px;
+}
+.uikit-menu-sub.uikit-menu-inline {
+  border: 0;
+}
+.uikit-menu-rtl.uikit-menu-sub.uikit-menu-inline .uikit-menu-item-group-title {
+  padding-right: 32px;
+  padding-left: 0;
 }
