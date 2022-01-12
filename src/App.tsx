@@ -6,15 +6,15 @@
 // import Tooltip from "./components/Tooltip/Tooltip";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-// import Icon from "./components/Icon/Icon";
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
-// library.add(fas);
+import Icon from "./components/Icon/Icon";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 // import Dropdown from "./components/Dropdown/Dropdown";
-import Menu from "./components/Menu/Menu";
+// import Menu from "./components/Menu/Menu";
 
 function App() {
-  const { SubMenu } = Menu;
+  // const { SubMenu } = Menu;
   return (
     <>
       {/* <div style={{ margin: "200px" }}>
@@ -64,12 +64,12 @@ function App() {
       </Button> */}
 
       {/* <FontAwesomeIcon icon={faCoffee} size="10x" /> */}
-      {/* <Icon icon="coffee" theme="danger" size="10x" />
-      <Icon icon="arrow-down" theme="danger" size="10x" /> */}
+      <Icon icon="coffee" theme="danger" size="10x" />
+      <Icon icon="arrow-down" theme="primary" size="10x" />
 
       {/* <Dropdown /> */}
 
-      <Menu mode="horizontal" selectedKeys={["one"]}>
+      {/* <Menu mode="horizontal" selectedKeys={["one"]}>
         <Menu.Item key="one">Navigation One</Menu.Item>
         <Menu.Item key="two" disabled>
           Navigation Two Disabled
@@ -85,7 +85,7 @@ function App() {
             <Menu.Item key="setting:4">Option 4</Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
-      </Menu>
+      </Menu> */}
 
       {/* <Menu
         style={{ width: 256 }}
